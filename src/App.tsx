@@ -45,9 +45,11 @@ const App = () => {
     }
   };
 
+  const [ansSelected, setAnsSelected] = useState<boolean>(false);
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
       const answer = e.currentTarget.value;
+      setAnsSelected(true);
       const correct = questions[number].correct_answer === answer;
       if (correct) {
         setScore((prevScore) => prevScore + 1);
@@ -64,6 +66,7 @@ const App = () => {
 
   const nextQuestion = () => {
     setNumber((prevNumber) => prevNumber + 1);
+    setAnsSelected(false);
   };
 
   return (
@@ -93,7 +96,7 @@ const App = () => {
             callback={checkAnswer}
           />
         )}
-        {!gameOver && !loading && userAnswers.length >= 1 && number !== Total_Questions - 1 && (
+        {!gameOver && !loading && userAnswers.length >= 1 && ansSelected == true && number !== Total_Questions - 1 && (
           <button className="next" onClick={nextQuestion}>
             Next
           </button>
