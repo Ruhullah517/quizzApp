@@ -56,24 +56,3 @@ this.addEventListener('fetch', function (event) {
         );
     }
 });
-
-
-// Activate the service worker
-// only keeps the cache we need and delete rest of them
-// self.addEventListener('activate', (event) => {
-//     const cacheWhitelist = [];
-//     cacheWhitelist.push(CACHE_NAME);
-
-//     event.waitUntil(
-//         caches.keys().then((cacheNames) => Promise.all(
-//             cacheNames.map((cacheName) => {
-//                 if (!cacheWhitelist.includes(cacheName)) {
-//                     return caches.delete(cacheName);
-//                 }
-//             })
-//         )).catch((error) => {
-//             console.log("error: ", error);
-//         })
-
-//     )
-// });
