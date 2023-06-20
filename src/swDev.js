@@ -1,7 +1,7 @@
 export default function swDev() {
 
     function determineAppServerKey() {
-        var vapidPublicKey = "BG-7M6F3HyItWINvyZelLTE6z31XZ_Of_-r-Z7tYEjnYy2TEuL6qLysh5UOXqmBZvVlpDqYAFfMxBQdDAZwYpjY";
+        var vapidPublicKey = `{process.env.VAPIDKEY}`;
         return urlBase64ToUint8Array(vapidPublicKey);
     }
 
@@ -21,17 +21,11 @@ export default function swDev() {
     }
 
     let swUrl = `${process.env.PUBLIC_URL}/sw.js`
-    // if ("serviceWorker" in navigator) {
+   
     navigator.serviceWorker.register(swUrl)
         .then((response) => {
             console.log("SW registered successfully", response);
-            // return response.pushManager.getSubscription()
-            //     .then((subscription) => {
-            //         return response.pushManager.subscribe({
-            //             userVisibleOnly: true,
-            //             applicationServerKey: determineAppServerKey()
-            //         })
-            //     })
+           
         })
-    // }
+
 }
